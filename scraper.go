@@ -27,7 +27,7 @@ func main() {
 
 	c := colly.NewCollector(
 		colly.UserAgent("dev-blog-scraperv1"),
-		colly.AllowedDomains("dev.to", "hackernoon.com", "realpython.com", "hacker.io"),
+		colly.AllowedDomains("dev.to", "hackernoon.com", "realpython.com", "hackr.io"),
 		colly.Async(true),
 	)
 
@@ -46,7 +46,7 @@ func main() {
 
 	// Set max Parallelism and introduce a Random Delay
 	c.Limit(&colly.LimitRule{
-		Parallelism: 4,
+		Parallelism: 2,
 		RandomDelay: 5 * time.Second,
 	})
 
@@ -55,8 +55,8 @@ func main() {
 		fmt.Println("Visiting", r.URL)
 	})
 
-	c.Visit("http://https://dev.to/")
-	c.Visit("https://hackr.io/blog")
+	c.Visit("https://dev.to/")
+	c.Visit("https://hackr.io/blog/")
 	c.Visit("https://realpython.com/")
 	c.Visit("https://hackernoon.com/")
 	c.Wait()

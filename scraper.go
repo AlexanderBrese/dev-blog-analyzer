@@ -46,7 +46,7 @@ func main() {
 
 	// Set max Parallelism and introduce a Random Delay
 	c.Limit(&colly.LimitRule{
-		Parallelism: 2,
+		Parallelism: 4,
 		RandomDelay: 5 * time.Second,
 	})
 
